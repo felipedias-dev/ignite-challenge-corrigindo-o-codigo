@@ -30,7 +30,7 @@ app.post("/repositories", (request, response) => {
 
 app.put("/repositories/:id", (request, response) => {
   const { id } = request.params;
-  const { updatedRepository } = request.body;
+  const updatedRepository = request.body;
 
   repositoryIndex = repositories.findIndex(repository => repository.id === id);
 
@@ -39,7 +39,7 @@ app.put("/repositories/:id", (request, response) => {
   }
 
   const repository = { ...repositories[repositoryIndex], ...updatedRepository };
-
+  
   repositories[repositoryIndex] = repository;
 
   return response.json(repository);
